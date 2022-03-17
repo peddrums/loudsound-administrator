@@ -13,8 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useState, Fragment } from "react";
+import { useRouter } from "next/router";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formValue, setFormValue] = useState({ email: "", password: "" });
@@ -28,11 +30,13 @@ export default function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(formValue.email, formValue.password)
+    console.log(formValue.email, formValue.password);
     try {
       setLoading(true);
       await login(auth, formValue.email, formValue.password);
       setLoading(false);
+
+      router.push("/");
     } catch (err) {
       setError(err);
       setLoading(false);
