@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
-import { RecordsSearchBar } from "../components/searchBars/RecordSearchBar";
-
 export default function Home() {
   const endpoints = [{ Login: "/login" }, { Expenses: "/finances/expenses" }];
   return (
@@ -15,12 +13,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      
       <main className={styles.main}>
         <ul>
           {endpoints.map((endpoint, idx) => {
             const [key, value] = Object.entries(endpoint).flat();
-            console.log(key, value);
+
             return (
               <li key={idx}>
                 <Link href={`${value}`} passHref>

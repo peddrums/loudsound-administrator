@@ -1,4 +1,4 @@
-//import AuthCheck from "/components/AuthCheck";
+import AuthCheck from "../../../../components/authComponents/authCheck"
 import {
   query,
   getDoc,
@@ -35,9 +35,9 @@ import {
 export default function UpdateRecord() {
   return (
     <Fragment>
-      {/*<AuthCheck>*/}
+      <AuthCheck>
       <RecordManager />
-      {/*</AuthCheck>*/}
+      </AuthCheck>
     </Fragment>
   );
 }

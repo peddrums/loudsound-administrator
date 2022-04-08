@@ -23,7 +23,7 @@ import PerfectScrollBar from "react-perfect-scrollbar";
 import { RecordsSearchBar } from "../../../../components/searchBars/RecordSearchBar";
 import { getCollectionData } from "../../../../utils/firebase/helpers";
 
-//import AuthCheck from "/components/AuthCheck";
+import AuthCheck from "../../../../components/authComponents/authCheck";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -93,7 +93,7 @@ export default function Quarter({ slug }) {
 
   return (
     <Fragment>
-      {/*<AuthCheck>*/}
+      <AuthCheck>
 
       <Head>
         <title>Records {`Records ${slug.toUpperCase()}`} | Material Kit</title>
@@ -192,7 +192,7 @@ export default function Quarter({ slug }) {
         </Container>
       </Box>
 
-      {/*</AuthCheck>*/}
+      </AuthCheck>
     </Fragment>
   );
 }

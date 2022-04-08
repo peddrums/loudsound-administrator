@@ -14,9 +14,21 @@ import {
 } from "@mui/material";
 import { useState, Fragment } from "react";
 import { useRouter } from "next/router";
+//import { getServerSideProps } from "./finances/expenses/[slug]";
 
-export default function LoginPage() {
+export async function getServerSideProps(context) {
+  const referer = context.req.headers.referer;
+  return { props: { referer: referer || null } };
+}
+
+export default function LoginPage(props) {
   const router = useRouter();
+
+  const referer =
+    new URL(props.referer).pathname === router.pathname
+      ? null
+      : new URL(props.referer).pathname;
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [formValue, setFormValue] = useState({ email: "", password: "" });
@@ -30,13 +42,12 @@ export default function LoginPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(formValue.email, formValue.password);
     try {
       setLoading(true);
       await login(auth, formValue.email, formValue.password);
       setLoading(false);
 
-      router.push("/");
+      router.push(referer || "/");
     } catch (err) {
       setError(err);
       setLoading(false);

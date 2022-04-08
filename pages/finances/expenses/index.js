@@ -7,12 +7,11 @@ import { getDocData } from "../../../utils/firebase/helpers";
 
 ////Firestore Stuff
 import { auth } from "../../../utils/firebase/db";
-//import AuthCheck from "/components/AuthCheck";
+import AuthCheck from "../../../components/authComponents/authCheck";
 import { useState } from "react";
 
 export default function ExpensePage() {
-
-  const user = auth.currentUser
+  const user = auth.currentUser;
 
   const [records, setRecords] = useState();
   const [loading, setLoading] = useState(true);
@@ -40,32 +39,32 @@ export default function ExpensePage() {
   return (
     <>
       <Head>
-        <title>Customers | Material Kit</title>
+        <title>Bow-chicka-wow-wow</title>
       </Head>
-      {/*<AuthCheck>*/}
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
-        <Container maxWidth={false}>
-          <RecordsSearchBar
-            resultsHandler={resultsHandler}
-            getDataHandler={getDocData}
-            formFields={formFields}
-            path={path}
-            title="Tax Quarter"
-            searchFields={[{ Endpoint: "endpoint" }]}
-            dataKey="endpoints"
-          />
-          <Box sx={{ mt: 3 }}>
+      <AuthCheck>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            py: 8,
+          }}
+        >
+          <Container maxWidth={false}>
+            <RecordsSearchBar
+              resultsHandler={resultsHandler}
+              getDataHandler={getDocData}
+              formFields={formFields}
+              path={path}
+              title="Tax Quarter"
+              searchFields={[{ Endpoint: "endpoint" }]}
+              dataKey="endpoints"
+            />
+            <Box sx={{ mt: 3 }}>
               <TaxQuarterTable endPoints={records} loading={loading} />
+            </Box>
+          </Container>
         </Box>
-        </Container>
-      </Box>
-      {/*</AuthCheck>*/}
+      </AuthCheck>
     </>
   );
 }

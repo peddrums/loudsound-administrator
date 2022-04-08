@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import {
   collection,
   doc,
@@ -9,12 +8,14 @@ import {
 } from "firebase/firestore";
 
 export async function getDocData(path, key) {
-    const filteredPath = path.replace('/undefined', '')
+  const filteredPath = path.replace("/undefined", "");
   const ref = doc(getFirestore(), filteredPath);
 
   const q = query(ref);
 
   const results = await getDoc(q);
+
+  if (!results.data()) return;
 
   return key ? results.data()[key] : results.data();
 }
