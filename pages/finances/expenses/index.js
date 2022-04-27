@@ -18,6 +18,7 @@ export default function ExpensePage() {
 
   function resultsHandler(data) {
     setRecords(data.records);
+
     setLoading(data.loading);
   }
 
@@ -25,12 +26,16 @@ export default function ExpensePage() {
 
   const formFields = [
     { Vendor: "vendor" },
+    { "Article Type": "articleType" },
     { "Net Total": "netTotal" },
     { "Gross Total": "grossTotal" },
-    { Taxes: "taxes" },
+    { "VAT @ 5%" : "vat5" },
+    { "VAT @ 12.5%" : "vat12" },
+    { "VAT @ 20%" : "vat20" },
     { "VAT ID": "vatId" },
     { Location: "location" },
     { "Receipt Date": "receiptDate" },
+    { "Receipt Time": "receiptTime" },
     { "Transaction Date": "transactionDate" },
     { "Transaction ID": "transactionId" },
     { "Entry Complete": "entryComplete" },

@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 
 export async function getDocData(path, key) {
+    console.log(path)
   const filteredPath = path.replace("/undefined", "");
   const ref = doc(getFirestore(), filteredPath);
 

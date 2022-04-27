@@ -1,4 +1,4 @@
-import AuthCheck from "../../../../components/authComponents/authCheck"
+import AuthCheck from "../../../../components/authComponents/authCheck";
 import {
   query,
   getDoc,
@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useEffect, useState, Fragment } from "react";
 
 import { auth } from "../../../../utils/firebase/db";
+import { getDocData } from "../../../../utils/firebase/helpers";
 
 import { useForm } from "react-hook-form";
 
@@ -36,7 +37,7 @@ export default function UpdateRecord() {
   return (
     <Fragment>
       <AuthCheck>
-      <RecordManager />
+        <RecordManager />
       </AuthCheck>
     </Fragment>
   );
@@ -63,6 +64,8 @@ function RecordManager() {
   useEffect(() => {
     async function getDataOnMount() {
       await getData();
+
+      //getDocData(recordRef);
     }
     getDataOnMount();
   }, []);
@@ -107,12 +110,16 @@ function Form({ record, recordRef, preview, getData }) {
       recordId: record._id,
       vendor: record.vendor,
       downloadUrl: record.imgUrl,
+      articleType: record.articleType,
       netTotal: record.netTotal,
       grossTotal: record.grossTotal,
-      taxes: record.taxes,
+      vat5: record.vat5,
+      vat12: record.vat12,
+      vat20: record.vat20,
       vatId: record.vatId,
       location: record.location,
       receiptDate: record.receiptDate,
+      receiptTime: record.receiptTime,
       transactionDate: record.transactionDate,
       transactionId: record.transactionId,
       entryComplete: record.entryComplete,
@@ -125,12 +132,16 @@ function Form({ record, recordRef, preview, getData }) {
   async function updateRecord({
     vendor,
     downloadUrl,
+    articleType,
     netTotal,
     grossTotal,
-    taxes,
+    vat5,
+    vat12,
+    vat20,
     vatId,
     location,
     receiptDate,
+    receiptTime,
     transactionDate,
     transactionId,
     entryComplete,
@@ -139,12 +150,16 @@ function Form({ record, recordRef, preview, getData }) {
 
     const filteredObj = [
       { vendor: vendor },
+      { articleType: articleType },
       { netTotal: netTotal === "" ? "" : Number(netTotal).toFixed(2) },
       { grossTotal: grossTotal === "" ? "" : Number(grossTotal).toFixed(2) },
-      { taxes: taxes === "" ? "" : Number(taxes).toFixed(2) },
+      { vat5: vat5 === "" ? "" : Number(vat5).toFixed(2) },
+      { vat12: vat12 === "" ? "" : Number(vat12).toFixed(2) },
+      { vat20: vat20 === "" ? "" : Number(vat20).toFixed(2) },
       { vatId: vatId },
       { location: location },
       { receiptDate: receiptDate },
+      { receiptTime: receiptTime },
       { transactionDate: transactionDate },
       { transactionId: transactionId },
       { entryComplete: entryComplete },
@@ -171,7 +186,7 @@ function Form({ record, recordRef, preview, getData }) {
     }
   }
 
-  const fields = [
+  /*  const fields = [
     { Vendor: "vendor" },
     { "Net Total": "netTotal" },
     { "Gross Total": "grossTotal" },
@@ -179,6 +194,23 @@ function Form({ record, recordRef, preview, getData }) {
     { "VAT ID": "vatId" },
     { Location: "location" },
     { "Receipt Date": "receiptDate" },
+    { "Transaction Date": "transactionDate" },
+    { "Transaction ID": "transactionId" },
+    { "Entry Complete": "entryComplete" },
+  ]; */
+
+  const fields = [
+    { Vendor: "vendor" },
+    { "Article Type": "articleType" },
+    { "Net Total": "netTotal" },
+    { "Gross Total": "grossTotal" },
+    { "VAT @ 5%": "vat5" },
+    { "VAT @ 12.5%": "vat12" },
+    { "VAT @ 20%": "vat20" },
+    { "VAT ID": "vatId" },
+    { Location: "location" },
+    { "Receipt Date": "receiptDate" },
+    { "Receipt Time": "receiptTime" },
     { "Transaction Date": "transactionDate" },
     { "Transaction ID": "transactionId" },
     { "Entry Complete": "entryComplete" },

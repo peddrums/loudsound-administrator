@@ -55,12 +55,17 @@ export default function UploadForm({
 
   async function updateRecord({
     vendor,
+    downloadUrl,
+    articleType,
     netTotal,
     grossTotal,
-    taxes,
+    vat5,
+    vat12,
+    vat20,
     vatId,
     location,
     receiptDate,
+    receiptTime,
     transactionDate,
     transactionId,
     entryComplete,
@@ -68,12 +73,16 @@ export default function UploadForm({
     setLoading(true);
     const filteredObj = [
       { vendor: vendor },
+      { articleType: articleType },
       { netTotal: netTotal === "" ? "" : Number(netTotal).toFixed(2) },
       { grossTotal: grossTotal === "" ? "" : Number(grossTotal).toFixed(2) },
-      { taxes: taxes === "" ? "" : Number(taxes).toFixed(2) },
+      { vat5: vat5 === "" ? "" : Number(vat5).toFixed(2) },
+      { vat12: vat12 === "" ? "" : Number(vat12).toFixed(2) },
+      { vat20: vat20 === "" ? "" : Number(vat20).toFixed(2) },
       { vatId: vatId },
       { location: location },
       { receiptDate: receiptDate },
+      { receiptTime: receiptTime },
       { transactionDate: transactionDate },
       { transactionId: transactionId },
     ].reduce((a, b) => {

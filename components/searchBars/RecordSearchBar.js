@@ -81,6 +81,8 @@ export function RecordsSearchBar({
       const filteredData = res?.filter((doc) => {
         if (formValue.searchField === "") return doc;
 
+        console.log("hello", doc, formValue.searchField);
+
         return doc[formValue.searchField]
           ?.trim()
           .toLowerCase()
