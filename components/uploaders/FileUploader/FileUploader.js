@@ -190,7 +190,7 @@ export default function CreateNewExpense({ path, docPathHandler }) {
                   setTaxQuarterOption(e.target.value);
                   console.log(taxQuarterOption);
                 }}
-                value={kebabCase(formatDatePath())}
+                defaultValue={kebabCase(formatDatePath())}
               >
                 {endpoints.map(
                   (endpoint, idx) =>

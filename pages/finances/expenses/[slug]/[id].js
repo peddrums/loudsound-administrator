@@ -226,8 +226,10 @@ function Form({ record, recordRef, preview, getData }) {
         <Grid container alignItems={"center"}>
           <Grid item md={4}>
             {!imageLoaded && <CircularProgress />}
-            <iframe
-              onLoad={() => setImageLoaded(true)}
+            <img
+              onLoad={() => {
+                setImageLoaded(true);
+              }}
               src={record.imgUrl}
               height="500px"
               alt="image"
