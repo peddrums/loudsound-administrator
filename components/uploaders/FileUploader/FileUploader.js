@@ -192,14 +192,16 @@ export default function CreateNewExpense({ path, docPathHandler }) {
                 }}
                 defaultValue={kebabCase(formatDatePath())}
               >
-                {endpoints.map(
-                  (endpoint, idx) =>
-                    endpoint.endpoint && (
-                      <option key={idx} value={endpoint.endpoint}>
-                        {endpoint.endpoint.toUpperCase()}
-                      </option>
-                    )
-                )}
+                {endpoints
+                  .map(
+                    (endpoint, idx) =>
+                      endpoint.endpoint && (
+                        <option key={idx} value={endpoint.endpoint}>
+                          {endpoint.endpoint.toUpperCase()}
+                        </option>
+                      )
+                  )
+                  .reverse().slice(0,3)}
                 {endpoints.some(
                   (endpoint) =>
                     !endpoint.endpoint === kebabCase(formatDatePath())

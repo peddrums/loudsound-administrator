@@ -81,7 +81,7 @@ export default function LoginPage(props) {
 
   return (
     <Container>
-      <p>{JSON.stringify(formValue)}</p>
+      {/*<p>{JSON.stringify(formValue)}</p>*/}
       {error && <p>{JSON.stringify(error)}</p>}
       <Card>
         {!loading ? (

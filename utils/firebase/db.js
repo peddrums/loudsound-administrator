@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-import clientConfig from "./clientConfig";
+import { clientConfig } from "./clientConfig";
 
 function createFirebaseApp(config) {
   try {

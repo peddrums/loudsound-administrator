@@ -237,7 +237,8 @@ function Form({ record, recordRef, preview, getData }) {
           </Grid>
           <Grid item md={8}>
             <Card sx={{ padding: 3 }}>
-              <Grid container justifyContent="flex-end" spacing={3}>
+              <Grid container justifyContent="space-between" alignItems="center" spacing={3}>
+                <Grid item><a href={`${record.imgUrl}`} target="_blank">Download</a></Grid>
                 <Grid item>
                   <Button variant="contained" onClick={openModal}>
                     Update Entry
