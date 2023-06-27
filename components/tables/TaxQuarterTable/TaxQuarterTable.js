@@ -35,35 +35,36 @@ export const TaxQuarterTable = ({ endPoints, loading, ...rest }) => {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {endPoints.map((endPoint, idx) => (
-                        <TableRow hover key={idx}>
-                          <TableCell padding="checkbox">
-                            <Checkbox value="true" />
-                          </TableCell>
-                          <TableCell>
-                            <Box
-                              sx={{
-                                alignItems: "center",
-                                display: "flex",
-                              }}
-                            >
-                              <Link
-                                href={`/finances/expenses/${endPoint.endpoint}`}
-                                passHref
+                      {endPoints
+                        .map((endPoint, idx) => (
+                          <TableRow hover key={idx}>
+                            <TableCell padding="checkbox">
+                              <Checkbox value="true" />
+                            </TableCell>
+                            <TableCell>
+                              <Box
+                                sx={{
+                                  alignItems: "center",
+                                  display: "flex",
+                                }}
                               >
-                                <a>
-                                  <Typography
-                                    color="textPrimary"
-                                    variant="body1"
-                                  >
-                                    {endPoint.endpoint.toUpperCase()}
-                                  </Typography>
-                                </a>
-                              </Link>
-                            </Box>
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                                <Link
+                                  href={`/finances/expenses/${endPoint.endpoint}`}
+                                  passHref
+                                >
+                                  <a>
+                                    <Typography
+                                      color="textPrimary"
+                                      variant="body1"
+                                    >
+                                      {endPoint.endpoint.toUpperCase()}
+                                    </Typography>
+                                  </a>
+                                </Link>
+                              </Box>
+                            </TableCell>
+                          </TableRow>
+                        )).reverse()}
                     </TableBody>
                   </Table>
                 </Box>

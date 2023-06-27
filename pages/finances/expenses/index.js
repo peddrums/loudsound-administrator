@@ -26,12 +26,13 @@ export default function ExpensePage() {
 
   const formFields = [
     { Vendor: "vendor" },
+    { Job: "job"},
     { "Article Type": "articleType" },
     { "Net Total": "netTotal" },
     { "Gross Total": "grossTotal" },
-    { "VAT @ 5%" : "vat5" },
-    { "VAT @ 12.5%" : "vat12" },
-    { "VAT @ 20%" : "vat20" },
+    { "VAT @ 5%": "vat5" },
+    { "VAT @ 12.5%": "vat12" },
+    { "VAT @ 20%": "vat20" },
     { "VAT ID": "vatId" },
     { Location: "location" },
     { "Receipt Date": "receiptDate" },

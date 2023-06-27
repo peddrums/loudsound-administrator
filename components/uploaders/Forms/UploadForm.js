@@ -37,6 +37,7 @@ export default function UploadForm({
       defaultValues: {
         recordId: record._id,
         vendor: record.vendor,
+        job: record.job,
         downloadUrl: record.imgUrl,
         netTotal: record.netTotal,
         grossTotal: record.grossTotal,
@@ -55,6 +56,7 @@ export default function UploadForm({
 
   async function updateRecord({
     vendor,
+    job,
     downloadUrl,
     articleType,
     netTotal,
@@ -73,6 +75,7 @@ export default function UploadForm({
     setLoading(true);
     const filteredObj = [
       { vendor: vendor },
+      { job: job },
       { articleType: articleType },
       { netTotal: netTotal === "" ? "" : Number(netTotal).toFixed(2) },
       { grossTotal: grossTotal === "" ? "" : Number(grossTotal).toFixed(2) },

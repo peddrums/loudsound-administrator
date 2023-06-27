@@ -109,6 +109,7 @@ function Form({ record, recordRef, preview, getData }) {
     defaultValues: {
       recordId: record._id,
       vendor: record.vendor,
+      job: record.job,
       downloadUrl: record.imgUrl,
       articleType: record.articleType,
       netTotal: record.netTotal,
@@ -131,6 +132,7 @@ function Form({ record, recordRef, preview, getData }) {
 
   async function updateRecord({
     vendor,
+    job,
     downloadUrl,
     articleType,
     netTotal,
@@ -150,6 +152,7 @@ function Form({ record, recordRef, preview, getData }) {
 
     const filteredObj = [
       { vendor: vendor },
+      { job: job },
       { articleType: articleType },
       { netTotal: netTotal === "" ? "" : Number(netTotal).toFixed(2) },
       { grossTotal: grossTotal === "" ? "" : Number(grossTotal).toFixed(2) },
@@ -201,6 +204,7 @@ function Form({ record, recordRef, preview, getData }) {
 
   const fields = [
     { Vendor: "vendor" },
+    { Job: "job" },
     { "Article Type": "articleType" },
     { "Net Total": "netTotal" },
     { "Gross Total": "grossTotal" },
@@ -237,8 +241,17 @@ function Form({ record, recordRef, preview, getData }) {
           </Grid>
           <Grid item md={8}>
             <Card sx={{ padding: 3 }}>
-              <Grid container justifyContent="space-between" alignItems="center" spacing={3}>
-                <Grid item><a href={`${record.imgUrl}`} target="_blank">Download</a></Grid>
+              <Grid
+                container
+                justifyContent="space-between"
+                alignItems="center"
+                spacing={3}
+              >
+                <Grid item>
+                  <a href={`${record.imgUrl}`} target="_blank">
+                    Download
+                  </a>
+                </Grid>
                 <Grid item>
                   <Button variant="contained" onClick={openModal}>
                     Update Entry

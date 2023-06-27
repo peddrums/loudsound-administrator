@@ -15,7 +15,10 @@ export function formatDatePath() {
   const endOfQuarterDate = new Date(today.getFullYear(), quarter * 3 + 1, 0);
 
   function getTheYear() {
-    if (endOfQuarterDate.getMonth() === 0 && today.getMonth() > 9 || endOfQuarterDate.getMonth() === 1 && today.getMonth() > 9) {
+    if (
+      (endOfQuarterDate.getMonth() === 0 && today.getMonth() > 9) ||
+      (endOfQuarterDate.getMonth() === 1 && today.getMonth() > 9)
+    ) {
       return endOfQuarterDate.getFullYear() + 1;
     }
 

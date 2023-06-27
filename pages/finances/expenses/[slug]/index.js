@@ -46,6 +46,8 @@ export default function Quarter({ slug }) {
 
   const searchFields = [
     { Vendor: "vendor" },
+    { Job: "job"},
+    {"Article Type": "articleType"},
     { "VAT ID": "vatId" },
     { "Receipt Date": "receiptDate" },
     { "Transaction Date": "transactionDate" },
@@ -69,6 +71,7 @@ export default function Quarter({ slug }) {
 
   const formFields = [
     { Vendor: "vendor" },
+    { Job: "job"},
     { "Article Type": "articleType" },
     { "Net Total": "netTotal" },
     { "Gross Total": "grossTotal" },
@@ -142,6 +145,7 @@ export default function Quarter({ slug }) {
                         <Table>
                           <TableHead>
                             <TableRow><TableCell color="primary">Vendor</TableCell>
+                            <TableCell color="primary">Job</TableCell>
                               <TableCell color="primary">Transaction Date</TableCell>
                               <TableCell color="primary">Receipt Date</TableCell>
                               <TableCell color="primary">Receipt Time</TableCell>
@@ -169,28 +173,31 @@ export default function Quarter({ slug }) {
                                 passHref
                               >
                                 <TableRow hover><TableCell>
-                                    {record.vendor || "No vendor date supplied"}
+                                    {record.vendor || "-"}
+                                  </TableCell>
+                                  <TableCell>
+                                    {record.job || "-"}
                                   </TableCell>
                                   <TableCell>
                                     {record.transactionDate ||
-                                      "No transaction date supplied"}
+                                      "-"}
                                   </TableCell>
                                   <TableCell>
                                     {record.receiptDate ||
-                                      "No receipt date supplied"}
+                                      "-"}
                                   </TableCell>
                                   <TableCell>
                                     {record.receiptTime ||
-                                      "No receipt time supplied"}
+                                      "-"}
                                   </TableCell>
                                   
                                   <TableCell>
                                     {record.netTotal ? `£ ${record.netTotal}` :
-                                      "No net total supplied"}
+                                      "-"}
                                   </TableCell>
                                   <TableCell>
                                     {record.grossTotal ? `£ ${record.grossTotal}` :
-                                      "No gross total supplied"}
+                                      "-"}
                                   </TableCell>
                                   <TableCell sx={{ textAlign: "center" }}>
                                     {record.entryComplete ? (
